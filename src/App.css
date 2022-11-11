@@ -1,0 +1,175 @@
+html {
+  background: #1d976c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #93f9b9,
+    #1d976c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #93f9b9,
+    #1d976c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.logo {
+  width: 40rem;
+  margin: 4rem auto 6rem;
+  display: block;
+}
+
+.intro__logo {
+  width: 20rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  perspective: 500;
+}
+
+.app {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.showApp {
+  opacity: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  font-size: 4rem;
+}
+
+.card {
+  background: #eee;
+  border-radius: 0.4rem;
+  width: 16rem;
+  height: 22rem;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card.card__back {
+  display: flex;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.card__back-logo {
+  width: 21rem;
+  translate: -12% 0;
+  z-index: 100;
+}
+
+.card__number {
+  font-size: 4rem;
+  position: absolute;
+}
+
+.number__top {
+  top: 2rem;
+  left: 2rem;
+}
+
+.number__bottom {
+  bottom: 1rem;
+  right: 2rem;
+}
+
+.suite {
+  position: absolute;
+  font-size: 3.2rem;
+}
+
+.suite__top {
+  top: 2.4rem;
+  right: 1.2rem;
+}
+.suite__bottom {
+  bottom: 1rem;
+  left: 1.6rem;
+}
+
+.card__logo {
+  width: 10rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  rotate: -45deg;
+}
+
+.suite--red {
+  color: #ed2939;
+}
+
+.suite--black {
+  color: #222;
+}
+
+.dealer,
+.player {
+  display: flex;
+  gap: 2rem;
+}
+
+.score {
+  align-self: center;
+  min-width: 20rem;
+}
+
+.conclusion {
+  min-height: 6rem;
+}
+
+.options {
+  display: flex;
+  gap: 2rem;
+}
+button {
+  font-size: 2rem;
+  background-color: #222;
+  color: #eee;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  translate: 0 5px;
+  box-shadow: none;
+}
+
+.options :first-child {
+  background-color: #ed2939;
+}
+
+.options :last-child {
+  background-color: #215b4c;
+}
