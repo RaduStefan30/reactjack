@@ -81,8 +81,10 @@ function App() {
     }
 
     if (playerScore === 21) {
-      if (dealerScore === 21) setConclusion("Draw");
-      else {
+      if (dealerScore === 21) {
+        setConclusion("Draw");
+        setShowSecond(true);
+      } else {
         setConclusion("Player Wins");
       }
     }

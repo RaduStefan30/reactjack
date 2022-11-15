@@ -60,73 +60,6 @@ html {
   font-size: 4rem;
 }
 
-.card {
-  background: #eee;
-  border-radius: 0.4rem;
-  width: 16rem;
-  height: 22rem;
-  position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.card.card__back {
-  display: flex;
-  overflow: hidden;
-  z-index: 100;
-}
-
-.card__back-logo {
-  width: 21rem;
-  translate: -12% 0;
-  z-index: 100;
-}
-
-.card__number {
-  font-size: 4rem;
-  position: absolute;
-}
-
-.number__top {
-  top: 2rem;
-  left: 2rem;
-}
-
-.number__bottom {
-  bottom: 1rem;
-  right: 2rem;
-}
-
-.suite {
-  position: absolute;
-  font-size: 3.2rem;
-}
-
-.suite__top {
-  top: 2.4rem;
-  right: 1.2rem;
-}
-.suite__bottom {
-  bottom: 1rem;
-  left: 1.6rem;
-}
-
-.card__logo {
-  width: 10rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  rotate: -45deg;
-}
-
-.suite--red {
-  color: #ed2939;
-}
-
-.suite--black {
-  color: #222;
-}
-
 .dealer,
 .player {
   display: flex;
@@ -145,7 +78,9 @@ html {
 .options {
   display: flex;
   gap: 2rem;
+  margin-top: 4rem;
 }
+
 button {
   font-size: 2rem;
   background-color: #222;

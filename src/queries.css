@@ -1,0 +1,49 @@
+@media screen and (max-width: 70em) {
+  .card {
+    transform: scale(0.9);
+  }
+  .dealer,
+  .player {
+    gap: 0;
+  }
+}
+
+@media screen and (max-width: 62.5em) {
+  html {
+    font-size: 55%;
+  }
+
+  .content {
+    margin-top: 10rem;
+  }
+}
+
+@media screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+  .content {
+    margin-top: 15rem;
+  }
+}
+
+@media screen and (max-width: 50em) {
+  html {
+    font-size: 42.5%;
+  }
+  .content {
+    margin-top: 25rem;
+  }
+}
+
+@media screen and (max-width: 44em) {
+  html {
+    font-size: 37.5%;
+  }
+}
+
+@media screen and (max-width: 32em) {
+  html {
+    font-size: 30%;
+  }
+}

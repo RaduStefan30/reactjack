@@ -2,6 +2,8 @@ import { GiSpades } from "react-icons/gi";
 import { FaHeart } from "react-icons/fa";
 import { allCards } from "../../allCards";
 
+import "./Cards.css";
+
 const Cards = (props) => {
   const { cards, showSecond } = props;
   return cards.map((card, index) => {
