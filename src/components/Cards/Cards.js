@@ -15,7 +15,9 @@ const Cards = (props) => {
     return (
       <div
         key={card * index * Math.random()}
-        className={`card ${suite} ${!showSecond && "card__back"}`}
+        className={`card ${suite} ${!showSecond && "card__back"} ${
+          index > 1 && "slide"
+        }`}
       >
         {!showSecond && index === 1 && (
           <img className="card__back-logo" src="logo-white.png" alt="logo" />

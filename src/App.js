@@ -1,10 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
+import Intro from "./components/Intro/Intro";
+import Logo from "./components/Logo/Logo";
 import { generateRandomCard, calculateScore } from "./utils";
 
 function App() {
   const [displayIntro, setDisplayIntro] = useState(true);
+  const [slide, setSlide] = useState(false);
 
   const [playerCards, setPlayerCards] = useState([
     generateRandomCard(),
@@ -57,8 +60,10 @@ function App() {
       }
 
       if (dealerScore > 21)
-        dealerCards.forEach((card) => {
-          if (card === 11) dealerScore -= 10;
+        dealerCards.forEach((card, index) => {
+          if (card === 11) {
+            setDealerCards((prev) => [...prev, (prev[index] = 1)]);
+          }
         });
 
       setDealerCards((prev) => [...prev, card]);
@@ -78,6 +83,7 @@ function App() {
   useEffect(() => {
     if (playerScore > 21 && dealerScore < 22) {
       setConclusion("Dealer Wins");
+      setShowSecond(true);
     }
 
     if (playerScore === 21) {
@@ -86,11 +92,13 @@ function App() {
         setShowSecond(true);
       } else {
         setConclusion("Player Wins");
+        setShowSecond(true);
       }
     }
   }, [playerCards, dealerCards]);
 
   const handleHit = () => {
+    setSlide(false);
     if (conclusion) {
       return;
     }
@@ -98,32 +106,35 @@ function App() {
   };
 
   const handleStand = () => {
+    setSlide(false);
+
     if (conclusion) {
       return;
     }
 
     drawDealerCard();
     setShowSecond(true);
-    if (dealerScore > 21) setConclusion("Player Wins");
-    else if (playerScore > 21) {
+
+    if (dealerScore > 21 && playerScore < 22) setConclusion("Player Wins");
+    else if (playerScore > 21 && dealerScore < 22) {
       setConclusion("Dealer Wins");
+    } else if (playerScore > 21 && playerScore === dealerScore) {
+      setConclusion("Draw");
     } else if (playerScore > dealerScore) {
       setConclusion("Player Wins");
     } else if (playerScore < dealerScore) {
       setConclusion("Dealer Wins");
-    } else {
-      setConclusion("Draw");
     }
   };
 
   const handleDouble = () => {
     if (playerCards.length !== 2) return;
+
     if (conclusion) {
       return;
     }
 
     drawPlayerCard();
-
     handleStand();
   };
 
@@ -132,18 +143,15 @@ function App() {
     setDealerCards([generateRandomCard(), generateRandomCard()]);
     setConclusion(null);
     setShowSecond(false);
+    setSlide(true);
   };
 
   return (
     <Fragment>
-      {displayIntro && (
-        <div className="intro">
-          <img className="intro__logo" src="logo.svg" alt="logo" />
-        </div>
-      )}
+      {displayIntro && <Intro />}
       <div className={`app ${!displayIntro && "showApp"}`}>
-        <img className="logo" src="logo.svg" alt="logo" />
-        <div className="content">
+        <Logo />
+        <div className={`content ${slide && "slide"}`}>
           <div className="conclusion">{conclusion}</div>
           <div className="dealer">
             <div className="score">
@@ -169,7 +177,6 @@ function App() {
             </div>
           )}
         </div>
-        ;
       </div>
     </Fragment>
   );
